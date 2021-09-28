@@ -1,0 +1,7 @@
+{
+  "name": "projeto-pesquisa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
