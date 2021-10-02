@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button color="success" (click)="deslogar()">
+         Deslogar
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Projetos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="erro-item-nao-encontrado">
+    <ion-label color="danger" *ngIf="!projetosPesquisas?.length">Nenhum Projeto Encontrado</ion-label>
+  </div>
+  <ion-virtual-scroll [items]="projetosPesquisas" approxItemHeight="400px">
+    <ion-card *virtualItem="let item;">
+    <ion-card-header>
+      <ion-card-title>{{ item.titulo }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Status Atual: {{item.obterNomeStatusProjeto()}}
+      <br>
+      <ion-button *ngIf="item.statusProjeto !== 1" (click)="setarStatusEmAndamento(item.idUsuario)" color="warning">Em andamento</ion-button> <br>
+      <ion-button *ngIf="item.statusProjeto !== 2" (click)="setarStatusPendencia(item.idUsuario)" color="danger">Pendente</ion-button><br>
+      <ion-button *ngIf="item.statusProjeto !== 3" (click)="setarStatusConcluido(item.idUsuario)" color="success">Concluido</ion-button>
+    </ion-card-content>
+    </ion-card>
+  </ion-virtual-scroll>
+</ion-content>

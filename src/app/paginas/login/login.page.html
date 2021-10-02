@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Logar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>NS - Projetos de Pesquisas</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form [formGroup]="form">
+          <ion-item>
+            <ion-label type="text" position="floating">Login</ion-label>
+            <ion-input formControlName="login"></ion-input>
+          </ion-item>
+          <ion-label color="danger" *ngIf="hasError('login', 'required')">Preenchimento Obrigatório</ion-label>
+          <ion-item>
+            <ion-label position="floating">Senha</ion-label>
+            <ion-input formControlName="senha" type="password"></ion-input>
+          </ion-item>
+          <ion-label color="danger" *ngIf="hasError('senha', 'required')">Preenchimento Obrigatório</ion-label>
+          <br />
+          <ion-label color="danger" *ngIf="!logou">Usuario ou senha invalidos</ion-label>
+          <div align="right">
+            <ion-button (click)="logar()" style="margin-top: 10px;" color="success">Logar</ion-button>
+          </div>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+

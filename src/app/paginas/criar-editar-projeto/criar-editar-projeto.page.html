@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button color="success" (click)="deslogar()">
+         Deslogar
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Projetos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>NS - Projetos de Pesquisas</ion-card-title>
+      <ion-label color="success" *ngIf="operacaoComSucesso">Registrado com sucesso!</ion-label>
+    </ion-card-header>
+
+    <ion-card-content *ngIf="form !== undefined && form !== null">
+      <form [formGroup]="form">
+        <ion-item>
+          <ion-label type="text" position="floating">Titulo</ion-label>
+          <ion-input formControlName="titulo"></ion-input>
+        </ion-item>
+        <ion-label color="danger" *ngIf="hasError('titulo', 'required')">Preenchimento Obrigatório</ion-label>
+        <ion-item>
+          <ion-label type="text" position="floating">Data de Conclusão Estimada</ion-label>
+          <ion-datetime formControlName="dataConclusaoEstimada" displayFormat="DD MM YYYY"></ion-datetime>
+        </ion-item>
+        <ion-label color="danger" *ngIf="hasError('dataConclusaoEstimada', 'required')">Preenchimento Obrigatório</ion-label>
+        <ion-item>
+          <ion-label type="text" position="floating">Metodologia</ion-label>
+          <ion-textarea formControlName="metodologia"></ion-textarea>
+        </ion-item>
+        <ion-label color="danger" *ngIf="hasError('metodologia', 'required')">Preenchimento Obrigatório</ion-label>
+        <ion-item>
+          <ion-label type="text" position="floating">Resultados esperados</ion-label>
+          <ion-textarea formControlName="resultadosEsperados"></ion-textarea>
+        </ion-item>
+        <ion-label color="danger" *ngIf="hasError('resultadosEsperados', 'required')">Preenchimento Obrigatório</ion-label>
+        <ion-item>
+          <ion-label type="text" position="floating">Conclusão</ion-label>
+          <ion-textarea formControlName="conclusao"></ion-textarea>
+        </ion-item>
+        <ion-label color="danger" *ngIf="hasError('conclusao', 'required')">Preenchimento Obrigatório</ion-label>
+
+
+        <br />
+        <div align="right">
+          <ion-button (click)="submit()" [disabled]="!form.valid" style="margin-top: 10px;" color="success">Salvar</ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
